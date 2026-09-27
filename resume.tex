@@ -1,0 +1,127 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{textcomp}
+\usepackage{pifont}
+\usepackage{gensymb}
+
+\usepackage{listings}
+
+\title{Resumo}
+
+\begin{document}
+
+simbologia -> começa depois de sobrescritos e subscritos
+
+símbolos de operações simples
+\begin{lstlisting}
+a + b
+a - b
+a \cdot b
+\end{lstlisting}
+\[
+  a + b
+  \quad
+  a - b
+  \quad
+  a \cdot b
+\]
+
+símbolos de operações simples 2
+\begin{lstlisting}
+\frac{}{}
+\sqrt{}
+(...) [...] \left ( ... \right )
+\end{lstlisting}
+\[
+  \frac{x+1}{x-1} \qquad
+  \sqrt[n]{2} \qquad
+  (x+1) \quad [x+1] \quad\left ( \frac{x+1}{x-1} \right)
+\]
+
+símbolos gregos
+
+equações longas -> depois de porque usar $\sin$
+
+matrizes
+\begin{lstlisting}
+\begin{matrix}
+a & b
+\\
+c & d
+\end{matrix}
+pmatrix para parenteses
+bmatrix para colchetes
+vetores
+indices com _{}
+\end{lstlisting}
+\[
+  \begin{matrix}
+  a & b
+  \\
+  c & d
+  \end{matrix}
+  \quad
+  \begin{pmatrix}
+  a & b
+  \\
+  c & d
+  \end{pmatrix}
+  \quad
+  \begin{bmatrix}
+  a & b
+  \\
+  c & d
+  \end{bmatrix}
+  \quad
+  \begin{pmatrix}
+  a
+  \\
+  b
+  \end{pmatrix}
+  \quad
+  A =
+  \begin{pmatrix}
+  a_{11} & a_{12}
+  \\
+  a_{21} & a_{22}
+  \end{pmatrix}
+\]
+
+equações
+\begin{lstlisting}
+& define ponto de alinhamento
+\\ quebra a linha
+align
+cases
+\end{lstlisting}
+
+  \begin{align*}
+  x + y &= 10
+  \\
+  x-y &= 2
+  \end{align*}
+\[
+  \quad
+  \begin{cases}
+  x + y = 10
+  \\
+  x - y = 2
+  \end{cases}
+  \quad
+  f(x) = 
+  \begin{cases}
+  x^2, & x\geq 0
+  \\
+  -x, & x<0
+  \end{cases}
+\]
+
+
+
+\end{document}

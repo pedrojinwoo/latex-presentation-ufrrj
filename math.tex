@@ -1,0 +1,1625 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+
+\usetheme{SimpleDarkBlue}
+
+% ------------------------------------------------
+% Codificação e idioma
+% ------------------------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+
+% ------------------------------------------------
+% Matemática
+% ------------------------------------------------
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ------------------------------------------------
+% Outros
+% ------------------------------------------------
+
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% ------------------------------------------------
+% Configurações
+% ------------------------------------------------
+
+\setbeamertemplate{caption}{\insertcaption}
+
+\definecolor{codebackground}{RGB}{245,245,245}
+\definecolor{codeblue}{RGB}{30,80,150}
+\definecolor{codegreen}{RGB}{30,120,70}
+\definecolor{codegray}{RGB}{100,100,100}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebackground},
+    frame=single,
+    rulecolor=\color{gray!30},
+    keywordstyle=\color{codeblue},
+    commentstyle=\color{codegreen},
+    breaklines=true,
+    showstringspaces=false,
+    columns=fullflexible,
+    keepspaces=true
+}
+
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebackground},
+    frame=single,
+    rulecolor=\color{gray!30},
+    keywordstyle=\color{codeblue},
+    commentstyle=\color{codegreen},
+    breaklines=true,
+    showstringspaces=false,
+    columns=fullflexible,
+    keepspaces=true,
+    inputencoding=utf8,
+    extendedchars=false,
+    literate={nbsp}{{\ }}1
+}
+
+% ------------------------------------------------
+% Informações
+% ------------------------------------------------
+
+\title{Fórmulas Matemáticas}
+\subtitle{Sintaxe, Estruturas e Notação Matemática}
+
+\author{Rodrigo Martins \and Pedro Motta}
+
+\institute{
+    Minicurso de Introdução ao LaTeX\\
+    Universidade Federal Rural do Rio de Janeiro
+}
+
+\date{}
+
+% =================================================
+% DOCUMENTO
+% =================================================
+
+\begin{document}
+
+% ------------------------------------------------
+% Capa
+% ------------------------------------------------
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% ------------------------------------------------
+% Objetivos
+% ------------------------------------------------
+
+\section{Objetivos}
+
+\begin{frame}{O que vamos aprender?}
+
+    \begin{itemize}
+        \item Sintaxe matemática do LaTeX;
+        \item Funções e operadores;
+        \item Matrizes e vetores;
+        \item Sistemas de equações;
+        \item Notações matemáticas avançadas;
+        \item Combinação de diferentes estruturas.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{A ideia central}
+
+    \begin{block}{LaTeX não desenha a fórmula}
+        Nós descrevemos a \textbf{estrutura} da expressão matemática.
+    \end{block}
+
+    \vspace{0.5cm}
+
+    \[
+        \frac{x^2+1}{x-1}
+    \]
+
+    \vspace{0.3cm}
+
+    \begin{center}
+        \texttt{\textbackslash frac\{x\^2+1\}\{x-1\}}
+    \end{center}
+
+\end{frame}
+
+% =================================================
+% MODO MATEMÁTICO
+% =================================================
+
+\section{Modo Matemático}
+
+\begin{frame}[fragile]{Entrando no modo matemático}
+
+    \begin{block}{Inline}
+        Matemática dentro do texto.
+    \end{block}
+
+\begin{lstlisting}
+A equacao $x^2+1=0$ possui raizes complexas.
+\end{lstlisting}
+
+    \begin{block}{Destacado}
+        Matemática em uma linha própria.
+    \end{block}
+
+\begin{lstlisting}
+\[
+x^2+1=0
+\]
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}{Inline ou destacado?}
+
+    \textbf{Inline:}
+
+    \[
+        \text{A equação } x^2+1=0
+    \]
+
+    \vspace{0.4cm}
+
+    \textbf{Destacado:}
+
+    \[
+        x^2+1=0
+    \]
+
+    \vspace{0.3cm}
+
+    \begin{center}
+        Escolha de acordo com o papel da expressão no texto.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{Equações numeradas}
+
+    Para equações que precisam de numeração:
+
+\begin{lstlisting}
+\begin{equation}
+E = mc^2
+\end{equation}
+\end{lstlisting}
+
+    \begin{equation}
+        E=mc^2
+    \end{equation}
+
+    \begin{center}
+        Útil quando a equação será discutida ou referenciada posteriormente.
+    \end{center}
+
+\end{frame}
+
+% =================================================
+% SINTAXE
+% =================================================
+
+\section{Sintaxe Matemática}
+
+\begin{frame}[fragile]{A estrutura dos comandos}
+
+    A forma mais comum:
+
+\begin{lstlisting}
+\comando{argumento}
+\end{lstlisting}
+
+    Exemplo:
+
+\begin{lstlisting}
+\frac{a}{b}
+\end{lstlisting}
+
+    \[
+        \frac{a}{b}
+    \]
+
+    \begin{alertblock}{Ideia}
+        O comando determina \textbf{o que fazer}; as chaves determinam \textbf{com o quê}.
+    \end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Sobrescritos e subscritos}
+
+    \begin{columns}
+
+        \column{0.48\textwidth}
+
+        \textbf{Sobrescrito}
+
+\begin{lstlisting}
+x^2
+\end{lstlisting}
+
+        \[
+            x^2
+        \]
+
+        \column{0.48\textwidth}
+
+        \textbf{Subscrito}
+
+\begin{lstlisting}
+x_i
+\end{lstlisting}
+
+        \[
+            x_i
+        \]
+
+    \end{columns}
+
+    \vspace{0.5cm}
+
+    Quando há mais de um caractere:
+
+\begin{lstlisting}
+x^{n+1}       a_{ij}
+\end{lstlisting}
+
+\[
+    x^{n+1}
+    \qquad
+    a_{ij}
+\]
+
+\end{frame}
+
+% =================================================
+% SIMBOLOGIA
+% =================================================
+
+\begin{frame}[fragile]{Operações básicas}
+
+\begin{lstlisting}
+a+b
+a-b
+a\cdot b
+\frac{a}{b}
+x^2
+\sqrt{x}
+\end{lstlisting}
+
+    \[
+        a+b
+        \qquad
+        a-b
+        \qquad
+        a\cdot b
+    \]
+
+    \[
+        \frac{a}{b}
+        \qquad
+        x^2
+        \qquad
+        \sqrt{x}
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Frações}
+
+    Estrutura:
+
+\begin{lstlisting}
+\frac{numerador}{denominador}
+\end{lstlisting}
+
+    Exemplo:
+
+\begin{lstlisting}
+\frac{x+1}{x-1}
+\end{lstlisting}
+
+    \[
+        \frac{x+1}{x-1}
+    \]
+
+    \vspace{0.3cm}
+
+    Estruturas podem ser combinadas:
+
+\begin{lstlisting}
+\frac{x^2+1}{\sqrt{x+1}}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{Raízes}
+
+    \textbf{Raiz quadrada}
+
+\begin{lstlisting}
+\sqrt{x}
+\end{lstlisting}
+
+    \[
+        \sqrt{x}
+    \]
+
+    \textbf{Raiz de índice $n$}
+
+\begin{lstlisting}
+\sqrt[n]{x}
+\end{lstlisting}
+
+    \[
+        \sqrt[n]{x}
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Delimitadores}
+
+    Delimitadores simples:
+
+\begin{lstlisting}
+(x+1)
+[x+1]
+\end{lstlisting}
+
+    Para expressões grandes:
+
+\begin{lstlisting}
+\left( \frac{x+1}{x-1} \right)
+\end{lstlisting}
+
+    \[
+        \left(
+        \frac{x+1}{x-1}
+        \right)
+    \]
+
+    \begin{center}
+        \texttt{\textbackslash left} e \texttt{\textbackslash right}
+        ajustam o tamanho dos delimitadores.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{Símbolos gregos}
+
+    Alguns dos mais utilizados:
+
+\begin{lstlisting}
+\alpha   \beta   \gamma
+\theta   \lambda \mu
+\pi      \sigma  \omega
+\end{lstlisting}
+
+    \[
+        \alpha \quad \beta \quad \gamma
+    \]
+
+    \[
+        \theta \quad \lambda \quad \mu
+    \]
+
+    \[
+        \pi \quad \sigma \quad \omega
+    \]
+
+\end{frame}
+
+% =================================================
+% FUNÇÕES
+% =================================================
+
+\section{Funções e Operadores}
+
+\begin{frame}[fragile]{Funções}
+
+    Uma função pode ser escrita diretamente:
+
+\begin{lstlisting}
+f(x)=x^2+2x+1
+\end{lstlisting}
+
+    \[
+        f(x)=x^2+2x+1
+    \]
+
+    Estruturas podem ser combinadas:
+
+\begin{lstlisting}
+f(x)=\frac{x^2+1}{x-1}
+\end{lstlisting}
+
+    \[
+        f(x)=\frac{x^2+1}{x-1}
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Operadores matemáticos}
+
+    Use comandos próprios para operadores:
+
+\begin{lstlisting}
+\sin(x)    \cos(x)    \tan(x)
+\log(x)    \ln(x)     \exp(x)
+\end{lstlisting}
+
+    \[
+        \sin(x)
+        \qquad
+        \cos(x)
+        \qquad
+        \tan(x)
+    \]
+
+    \[
+        \log(x)
+        \qquad
+        \ln(x)
+        \qquad
+        \exp(x)
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Por que usar \texttt{\textbackslash sin}?}
+
+    \textbf{Evite:}
+
+\begin{lstlisting}
+sin(x)
+\end{lstlisting}
+
+    \textbf{Prefira:}
+
+\begin{lstlisting}
+\sin(x)
+\end{lstlisting}
+
+    \[
+        \sin(x)
+    \]
+
+    \begin{alertblock}{Boa prática}
+        Utilize os comandos semânticos fornecidos pelo LaTeX.
+    \end{alertblock}
+
+\end{frame}
+
+% =================================================
+% EQUAÇÕES LONGAS
+% =================================================
+
+\section{Matrizes e Vetores}
+
+\begin{frame}[fragile]{Matrizes}
+
+    Estrutura básica:
+
+\begin{lstlisting}
+\begin{matrix}
+a & b\\
+c & d
+\end{matrix}
+\end{lstlisting}
+
+    \[
+        \begin{matrix}
+            a & b\\
+            c & d
+        \end{matrix}
+    \]
+
+    \begin{itemize}
+        \item \texttt{\&} separa colunas;
+        \item \texttt{\textbackslash\textbackslash} cria uma nova linha.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Tipos de matrizes}
+
+    \textbf{Parênteses}
+
+\begin{lstlisting}
+\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}
+\end{lstlisting}
+
+    \[
+        \begin{pmatrix}
+            a & b\\
+            c & d
+        \end{pmatrix}
+    \]
+
+    \textbf{Colchetes}
+
+\begin{lstlisting}
+\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{Vetores}
+
+    Vetor coluna:
+
+\begin{lstlisting}
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}
+\end{lstlisting}
+
+    \[
+        \begin{pmatrix}
+            x\\
+            y\\
+            z
+        \end{pmatrix}
+    \]
+
+    \vspace{0.2cm}
+
+    A mesma estrutura pode representar uma matriz $3\times1$.
+
+\end{frame}
+
+\begin{frame}[fragile]{Matrizes com índices}
+
+\begin{lstlisting}
+A =
+\begin{pmatrix}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{pmatrix}
+\end{lstlisting}
+
+    \[
+        A=
+        \begin{pmatrix}
+            a_{11} & a_{12}\\
+            a_{21} & a_{22}
+        \end{pmatrix}
+    \]
+
+    \begin{center}
+        Uma estrutura pode conter outras estruturas.
+    \end{center}
+
+\end{frame}
+
+\section{Sistemas de Equações}
+
+\begin{frame}[fragile]{Equações alinhadas}
+
+\begin{lstlisting}
+\begin{align}
+x+y &= 10\\
+x-y &= 2
+\end{align}
+\end{lstlisting}
+
+    \[
+        \begin{aligned}
+            x+y &= 10\\
+            x-y &= 2
+        \end{aligned}
+    \]
+
+    \begin{itemize}
+        \item \texttt{\&} define o ponto de alinhamento;
+        \item \texttt{\textbackslash\textbackslash} quebra a linha.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Sistemas de equações}
+
+\begin{lstlisting}
+\begin{cases}
+x+y=10\\
+x-y=2
+\end{cases}
+\end{lstlisting}
+
+    \[
+        \begin{cases}
+            x+y=10\\
+            x-y=2
+        \end{cases}
+    \]
+
+    \begin{center}
+        O ambiente \texttt{cases} cria a estrutura do sistema.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{Funções definidas por partes}
+
+\begin{lstlisting}
+f(x)=
+\begin{cases}
+x^2, & x\geq 0\\
+-x, & x<0
+\end{cases}
+\end{lstlisting}
+
+    \[
+        f(x)=
+        \begin{cases}
+            x^2, & x\geq0\\
+            -x, & x<0
+        \end{cases}
+    \]
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Limites}
+
+    Estrutura:
+
+\begin{lstlisting}
+\lim_{x\to a} f(x)
+\end{lstlisting}
+
+    Exemplo:
+
+\begin{lstlisting}
+\lim_{x\to 0}\frac{\sin x}{x}=1
+\end{lstlisting}
+
+    \[
+        \lim_{x\to 0}
+        \frac{\sin x}{x}
+        =1
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Somatórios}
+
+    Estrutura:
+
+\begin{lstlisting}
+\sum_{i=1}^{n} x_i
+\end{lstlisting}
+
+    \[
+        \sum_{i=1}^{n}x_i
+    \]
+
+    Outro exemplo:
+
+\begin{lstlisting}
+\sum_{i=1}^{n} i^2
+\end{lstlisting}
+
+    \[
+        \sum_{i=1}^{n}i^2
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Produtórios}
+
+    A estrutura é semelhante ao somatório:
+
+\begin{lstlisting}
+\prod_{i=1}^{n} x_i
+\end{lstlisting}
+
+    \[
+        \prod_{i=1}^{n}x_i
+    \]
+
+    \begin{center}
+        \texttt{\textbackslash sum} $\rightarrow$ soma
+        \qquad
+        \texttt{\textbackslash prod} $\rightarrow$ produto
+    \end{center}
+
+\end{frame}
+
+% =================================================
+% NOTAÇÃO AVANÇADA
+% =================================================
+
+\section{Derivadas e Integrais}
+
+\begin{frame}[fragile]{Derivadas}
+
+    Notação simples:
+
+\begin{lstlisting}
+f'(x)
+\end{lstlisting}
+
+    \[
+        f'(x)
+    \]
+
+    Derivada como fração:
+
+\begin{lstlisting}
+\frac{df}{dx}
+\end{lstlisting}
+
+    \[
+        \frac{df}{dx}
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Derivadas de ordem superior}
+
+    Primeira derivada:
+
+\begin{lstlisting}
+\frac{df}{dx}
+\end{lstlisting}
+
+    \[
+        \frac{df}{dx}
+    \]
+
+    Segunda derivada:
+
+\begin{lstlisting}
+\frac{d^2f}{dx^2}
+\end{lstlisting}
+
+    \[
+        \frac{d^2f}{dx^2}
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Integrais}
+
+    Integral indefinida:
+
+\begin{lstlisting}
+\int f(x)\,dx
+\end{lstlisting}
+
+    \[
+        \int f(x)\,dx
+    \]
+
+    Integral definida:
+
+\begin{lstlisting}
+\int_a^b f(x)\,dx
+\end{lstlisting}
+
+    \[
+        \int_a^b f(x)\,dx
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Integrais}
+
+    Derivada Parcial:
+
+\begin{lstlisting}
+\frac{\parial f}{\partial x}
+\end{lstlisting}
+
+    \[
+        \frac{\partial f}{\partial x}
+    \]
+
+    Gradiente:
+
+\begin{lstlisting}
+\nabla f(x,y)
+\end{lstlisting}
+
+    \[
+    \nabla f(x,y) = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right)
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Integrais}
+
+    
+    Integrais Múltiplas:
+
+\begin{lstlisting}
+\iint_D f(x,y)
+\end{lstlisting}
+
+    \[
+    \iint_D f(x,y) \,dx\,dy
+    \]
+
+    Caminho/Superfície:
+
+\begin{lstlisting}
+\oint_C \mathbf{F} \cdot d\mathbf{r}
+\end{lstlisting}
+
+    \[
+    \oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S}
+    \]
+
+\end{frame}
+
+\section{Notação Avançada}
+
+\begin{frame}[fragile]{Conjuntos}
+
+    Alguns símbolos importantes:
+
+\begin{lstlisting}
+x \in A
+A \subseteq B
+A \cup B
+A \cap B
+\end{lstlisting}
+
+    \[
+        x\in A
+        \qquad
+        A\subseteq B
+    \]
+
+    \[
+        A\cup B
+        \qquad
+        A\cap B
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Lógica matemática}
+
+    Comandos frequentes:
+
+\begin{lstlisting}
+\forall
+\exists
+\neg
+\land
+\lor
+\Rightarrow
+\Leftrightarrow
+\end{lstlisting}
+
+    \[
+        \forall x,\quad
+        P(x)\Rightarrow Q(x)
+    \]
+
+    \[
+        P(x)\Leftrightarrow Q(x)
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Notação de conjuntos}
+
+    Uma expressão mais elaborada:
+
+\begin{lstlisting}
+\left\{
+x\in\mathbb{R}
+\mid x>0
+\right\}
+\end{lstlisting}
+
+    \[
+        \left\{
+            x\in\mathbb{R}
+            \mid x>0
+        \right\}
+    \]
+
+    \begin{center}
+        Delimitadores + símbolos + condição.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{Probabilidade e estatística}
+
+    Algumas notações comuns:
+
+\begin{lstlisting}
+P(A\mid B)
+E[X]
+P(A\cap B)
+\end{lstlisting}
+
+    \[
+        P(A\mid B)
+        \qquad
+        E[X]
+    \]
+
+    \[
+        P(A\cap B)
+        =
+        P(A\mid B)P(B)
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Notação Assintótica}
+
+\begin{lstlisting}
+T(n) = \mathcal{O}(n \log n)
+\Omega(n) \le T(n) \le \mathcal{O}(n^2)
+T(n) = \Theta(n^2)
+\end{lstlisting}
+
+    \[
+    T(n) = \mathcal{O}(n \log n)
+    \]
+    \[
+    \Omega(n) \le T(n) \le \mathcal{O}(n^2)
+    \]
+    \[
+    T(n) = \Theta(n^2)
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Normas e notação vetorial}
+
+    Norma:
+
+\begin{lstlisting}
+\|x\|
+\end{lstlisting}
+
+    \[
+        \|x\|
+    \]
+
+    Exemplo:
+
+\begin{lstlisting}
+\left\{
+x\in\mathbb{R}^n
+\mid
+\|x\|=1
+\right\}
+\end{lstlisting}
+
+    \[
+        \left\{
+            x\in\mathbb{R}^n
+            \mid
+            \|x\|=1
+        \right\}
+    \]
+
+\end{frame}
+
+% =================================================
+% TEOREMAS E DEMONSTRAÇÕES
+% =================================================
+
+\section{Ambientes de Teorema e Demonstração}
+
+\begin{frame}[fragile]{Teoremas e Demonstrações}
+
+Preâmbulo:
+\begin{lstlisting}
+\usepackage{amsthm}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\end{lstlisting}
+
+Corpo:
+\begin{lstlisting}
+\begin{theorem}[nome do teorema]
+    ...
+\end{theorem}
+
+\begin{proof}
+    ...
+\end{proof}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{Teoremas e Demonstrações: Ida e Volta}
+
+\begin{lstlisting}
+\medskip
+\noindent (\textbf{$\Rightarrow$}) 
+\medskip
+\noindent (\textbf{$\Leftarrow$})
+\end{lstlisting}
+
+    \begin{proof}
+    Queremos provar que o operador $T$ é contínuo se e somente se é limitado.
+
+    \medskip
+    \noindent (\textbf{$\Rightarrow$}) Assume-se que $T$ é contínuo. Então, para todo $\epsilon > 0$, existe $\delta > 0$ tal que...
+
+    \medskip
+    \noindent (\textbf{$\Leftarrow$}) Assume-se que $T$ é limitado. Existe uma constante $M > 0$ tal que $\|Tx\| \le M\|x\|$...
+    \end{proof}
+
+\end{frame}
+
+\begin{frame}[fragile]{Teoremas e Demonstrações: Prova por Casos}
+
+\begin{lstlisting}
+\begin{itemize}
+\item[\textbf{Caso x:}] \textit{...}
+\end{itemize}
+\end{lstlisting}
+
+    \begin{proof}
+    Dividimos a análise em dois casos exaustivos:
+    \begin{itemize}
+        \item[\textbf{Caso 1:}] \textit{$n$ é par ($n = 2k$).} \\
+        $n^2 + n = 4k^2 + 2k = 2(2k^2 + k)$, que é par.
+        
+        \item[\textbf{Caso 2:}] \textit{$n$ é ímpar ($n = 2k + 1$).} \\
+        $n^2 + n = (2k+1)^2 + (2k+1) = 4k^2 + 6k + 2 = 2(2k^2 + 3k + 1)$, que é par.
+    \end{itemize}
+    Logo, $n^2 + n$ é sempre par.
+    \end{proof}
+
+\end{frame}
+
+\begin{frame}[fragile]{Teoremas e Demonstrações: Indução Matemática}
+
+\begin{lstlisting}
+\begin{description}
+\item[Base / Hipotese / Passo :] 
+\end{description}
+\end{lstlisting}
+
+   \begin{proof}
+    Provamos que $\sum_{i=1}^{n} (2i - 1) = n^2$ para todo $n \ge 1$:
+
+    \begin{description}\setlength{\itemsep}{0pt}
+        \item[Base:] Para $n=1 \implies 2(1)-1 = 1 = 1^2$. \checkmark
+        \item[Hipótese:] Assuma $\sum_{i=1}^{k} (2i - 1) = k^2$ para $k \ge 1$.
+        \item[Passo:] Para $n=k+1$, temos:
+    \end{description}
+    \[
+    \sum_{i=1}^{k+1} (2i - 1) = \underbrace{\sum_{i=1}^{k} (2i - 1)}_{k^2} + (2k + 1) = k^2 + 2k + 1 = (k+1)^2 \quad \square
+    \]
+    \end{proof}
+
+\end{frame}
+
+\begin{frame}[fragile]{Teoremas e Demonstrações: Algébrico com Justificativas}
+
+\begin{lstlisting}
+\begin{align*}
+\end{align*}
+\end{lstlisting}
+
+   \begin{proof}
+    Desenvolvendo a expressão, temos:
+    \begin{align*}
+    (x+1)^3 - (x-1)^3 &= (x^3 + 3x^2 + 3x + 1) - (x^3 - 3x^2 + 3x - 1) && \text{(Expansão dos cubos)} \\
+                    &= x^3 - x^3 + 3x^2 + 3x^2 + 3x - 3x + 1 + 1 && \text{(Reagrupamento)} \\
+                    &= 6x^2 + 2 && \text{(Simplificação final)}
+    \end{align*}
+    O que conclui a demonstração.
+    \end{proof}
+
+\end{frame}
+
+% =================================================
+% ORGANIZAÇÃO
+% =================================================
+
+\section{Organização de Equações}
+
+\begin{frame}[fragile]{Expressões em várias linhas}
+
+\begin{lstlisting}
+\begin{align}
+f(x)
+&= x^2 + 2x + 1\\
+&= (x+1)^2
+\end{align}
+\end{lstlisting}
+
+    \[
+        \begin{aligned}
+            f(x)
+            &=x^2+2x+1\\
+            &=(x+1)^2
+        \end{aligned}
+    \]
+
+    \begin{alertblock}{Observe}
+        O alinhamento acontece no símbolo marcado por \texttt{\&}.
+    \end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Com ou sem numeração?}
+
+    \textbf{Com numeração:}
+
+\begin{lstlisting}
+\begin{align}
+x+y &= 10\\
+x-y &= 2
+\end{align}
+\end{lstlisting}
+
+    \textbf{Sem numeração:}
+
+\begin{lstlisting}
+\begin{align*}
+x+y &= 10\\
+x-y &= 2
+\end{align*}
+\end{lstlisting}
+
+    \begin{center}
+        O \texttt{*} normalmente indica a versão sem numeração.
+    \end{center}
+
+\end{frame}
+
+% =================================================
+% BOAS PRÁTICAS
+% =================================================
+
+\section{Boas Práticas}
+
+\begin{frame}[fragile]{Escreva a estrutura, não a aparência}
+
+    \textbf{Evite:}
+
+\begin{lstlisting}
+$$
+sin(x)=1
+$$
+\end{lstlisting}
+
+    \textbf{Prefira:}
+
+\begin{lstlisting}
+\[
+\sin(x)=1
+\]
+\end{lstlisting}
+
+    \[
+        \sin(x)=1
+    \]
+
+\end{frame}
+
+\begin{frame}[fragile]{Agrupamento é fundamental}
+
+    Observe a diferença:
+
+\begin{lstlisting}
+x^n+1
+\end{lstlisting}
+
+    \[
+        x^n+1
+    \]
+
+\begin{lstlisting}
+x^{n+1}
+\end{lstlisting}
+
+    \[
+        x^{n+1}
+    \]
+
+    \begin{alertblock}{Regra}
+        Use \texttt{\{ \}} quando uma estrutura possui mais de um caractere.
+    \end{alertblock}
+
+\end{frame}
+
+\begin{frame}{Pensando em estruturas}
+
+    \begin{center}
+
+        \Large
+        \textbf{Expressão matemática}
+
+        \vspace{0.5cm}
+
+        $\Downarrow$
+
+        \vspace{0.5cm}
+
+        \textbf{Estruturas menores}
+
+        \vspace{0.5cm}
+
+        $\Downarrow$
+
+        \vspace{0.5cm}
+
+        \textbf{Comandos + argumentos + agrupamento}
+
+    \end{center}
+
+    \vspace{0.5cm}
+
+    \begin{center}
+        Uma expressão complexa é construída pela combinação
+        de estruturas simples.
+    \end{center}
+
+\end{frame}
+
+% =================================================
+% DESAFIOS
+% =================================================
+
+\section{Exercícios de Transição}
+
+\begin{frame}{Agora é a sua vez}
+
+    \begin{center}
+
+        \Huge
+        \textbf{Vamos praticar!}
+
+        \vspace{1cm}
+
+        \Large
+
+        Das estruturas simples
+
+        \[
+            x^2,\qquad
+            \frac{a}{b},\qquad
+            \sqrt{x}
+        \]
+
+        às expressões complexas.
+
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 1}
+
+    Reproduza em LaTeX:
+
+    \[
+        \frac{x^2+3x+2}{x-1}
+    \]
+
+    \vspace{0.5cm}
+
+    \begin{center}
+        \textbf{Quais estruturas você precisa combinar?}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 2}
+
+    Reproduza:
+
+    \[
+        \sum_{i=1}^{n}i^2
+    \]
+
+    \vspace{0.5cm}
+
+    \begin{center}
+        Pense na estrutura antes de pensar no comando.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 3}
+
+    Reproduza:
+
+    \[
+        A=
+        \begin{pmatrix}
+            a_{11} & a_{12}\\
+            a_{21} & a_{22}
+        \end{pmatrix}
+    \]
+
+    \vspace{0.4cm}
+
+    \begin{center}
+        Matriz + índices + alinhamento.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 4}
+
+    Reproduza:
+
+    \[
+        \begin{cases}
+            x+y=10\\
+            2x-y=3
+        \end{cases}
+    \]
+
+    \vspace{0.4cm}
+
+    \begin{center}
+        Qual ambiente representa melhor essa estrutura?
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 5}
+
+    Reproduza:
+
+    \[
+        f(x)=
+        \frac{
+            \displaystyle\sum_{i=1}^{n}x_i^2
+        }{
+            \sqrt{x^2+1}
+        }
+    \]
+
+    \vspace{0.3cm}
+
+    \begin{center}
+        \textbf{Não tente decorar.}\\
+        Identifique cada estrutura e monte a expressão.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 6}
+
+    Reproduza:
+
+    \[
+        \nabla f(x,y,z) = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right)
+    \]
+
+    \vspace{0.3cm}
+
+%    \begin{center}
+%        \textbf{Não tente decorar.}\\
+%        Identifique cada estrutura e monte a expressão.
+%    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 7}
+
+    Reproduza:
+
+    \[
+        \nabla f(x) = A^T(Ax - b) =
+        \begin{pmatrix}
+            0 \\
+            0
+        \end{pmatrix}
+    \]
+
+    \vspace{0.3cm}
+
+%    \begin{center}
+%        \textbf{Não tente decorar.}\\
+%        Identifique cada estrutura e monte a expressão.
+%    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 8}
+
+    Reproduza:
+
+    \[
+        H =
+        \begin{bmatrix}
+            \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\
+            \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2}
+        \end{bmatrix}
+    \]
+
+    \vspace{0.3cm}
+
+    \begin{center}
+        \textbf{Não tente decorar.}\\
+        Identifique cada estrutura e monte a expressão.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Desafio 9}
+
+    Reproduza:
+
+A complexidade temporal do algoritmo no pior caso é dada pelo somatório:
+\[
+T(n) = \sum_{i=1}^{n} \left( \frac{n}{i} \right) = n \cdot H_n
+\]
+
+Como a série harmónica satisfaz $H_n = \ln n + \gamma + \mathcal{O}\left(\frac{1}{n}\right)$, a complexidade assintótica é:
+\[
+T(n) = \mathcal{O}(n \log n)
+\]
+
+    \vspace{0.3cm}
+
+%    \begin{center}
+%        \textbf{Não tente decorar.}\\
+%        Identifique cada estrutura e monte a expressão.
+%    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{Último Desafio}
+
+\begin{theorem}[Teorema 1]
+Se $f(x) = x^3$, então a área sob a curva $f'(x)$ no intervalo $[0, 2]$ é $8$.
+\end{theorem}
+
+\begin{proof}
+A derivada de $f(x)$ é $f'(x) = 3x^2$. Calculando a integral definida:
+\[
+\int_{0}^{2} 3x^2 \, dx = \left[ x^3 \right]_{0}^{2}
+\]
+Avaliando nos limites de integração pelo Teorema Fundamental do Cálculo:
+\[
+\left[ x^3 \right]_{0}^{2} = 2^3 - 0^3 = 8
+\]
+\end{proof}
+
+\end{frame}
+
+% =================================================
+% SÍNTESE
+% =================================================
+
+\section{Síntese}
+
+\begin{frame}{O que aprendemos?}
+
+    \begin{columns}
+
+        \column{0.48\textwidth}
+
+        \textbf{Sintaxe}
+
+        \[
+            x^2
+            \qquad
+            x_i
+            \qquad
+            \frac{a}{b}
+        \]
+
+        \textbf{Funções}
+
+        \[
+            \sin,\quad
+            \log,\quad
+            \ln
+        \]
+
+        \textbf{Notação Assintótica}
+
+        \[
+            T(n),
+            \quad
+            \Omega(n),
+            \quad
+            \mathcal{O}
+        \]
+
+        \column{0.48\textwidth}
+
+        \textbf{Estruturas}
+
+        \[
+            \sum,\quad
+            \int,\quad
+            \lim
+        \]
+
+        \textbf{Ambientes}
+
+        \[
+            \text{matrix},
+            \quad
+            \text{align},
+            \quad
+            \text{cases}
+        \]
+
+        \textbf{Demonstrações}
+
+        \[
+            \text{theorem},
+            \quad
+            \text{proof}
+        \]
+
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}{A regra mais importante}
+
+    \begin{center}
+
+        \Large
+        \textbf{Pense na estrutura, não na aparência.}
+
+        \vspace{1cm}
+
+        \[
+            \boxed{
+            \text{estrutura}
+            +
+            \text{estrutura}
+            +
+            \text{estrutura}
+            =
+            \text{expressão}
+            }
+        \]
+
+        \vspace{0.8cm}
+
+        \normalsize
+
+        O LaTeX fica muito mais fácil quando aprendemos
+        a reconhecer esses padrões.
+
+    \end{center}
+
+\end{frame}
+
+% =================================================
+
+\end{document}
+```
